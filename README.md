@@ -3,7 +3,7 @@
 porting sublime-expand-region to visual code 
 https://github.com/aronwoost/sublime-expand-region
 
-#JavaScript (should also work for other c'ish languages like Java).
+### JavaScript 
 1. Expand selection to word
 2. Expand selection to quotes (content only)
 3. Expand selection to quotes (with quotes)
@@ -33,14 +33,12 @@ and so on...
 
 
 ## Using
-
 - Set a shortcut.
-  Open "Key Bindings - User" and add to following line: 
+  Open "Key Bindings" and add to following line: 
 ``` js
-    {
-        "key": "ctrl+w",
-        "command": "expand_region"
-    },,
-
+{
+    "key": "ctrl+w","command": "expand_region"
+}
+```
 
 ### Don't support python and latex now
