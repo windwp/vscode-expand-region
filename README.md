@@ -1,41 +1,46 @@
-# README
-## This is the README for your extension "expand-region" 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
 
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-** Enjoy!**<<<<<<< .mine
-# README
-## This is the README for your extension "expand-region" 
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-** Enjoy!**
-=======
 # vscode-expand-region
-porting sublime-expand-region to visual code
+porting sublime-expand-region to visual code 
+https://github.com/aronwoost/sublime-expand-region
+
+#JavaScript (should also work for other c'ish languages like Java).
+1. Expand selection to word
+2. Expand selection to quotes (content only)
+3. Expand selection to quotes (with quotes)
+4. Expand selection to square braces
+5. Expand selection to expression
+6. Expand selection to content of braces (all arguments in this case)
+7. Expand selection to line
+8. Expand selection to function body (w/o curly brace)
+9. Expand selection to function body (with curly brace)
+
+and so on...
 
 
+### HTML
+
+![](http://aronwoost.github.io/expand-to-html.gif)
+
+1. Expand selection to word
+2. Expand selection to quotes (content only)
+3. Expand selection to quotes (with quotes)
+4. Expand selection to complete self closing tag
+5. Expand selection to parent node content
+6. Expand selection to complete node
+7. Expand selection to parent node content
+
+and so on...
 
 
+## Using
+
+- Set a shortcut.
+  Open "Key Bindings - User" and add to following line: 
+``` js
+    {
+        "key": "ctrl+w",
+        "command": "expand_region"
+    },,
 
 
-
-
-
-
-
->>>>>>> .theirs
+### Don't support python and latex now

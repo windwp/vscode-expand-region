@@ -16,13 +16,13 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.expand_region"
+        "onCommand:expand_region"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.expand_region",
+                "command": "expand_region",
                 "title": "Expand Region"
             }
         ],
@@ -30,7 +30,7 @@
             {
                 "key": "ctrl+w",
                 "mac": "cmd+w",
-                "command": "extension.expand_region",
+                "command": "expand_region",
                 "when": "editorTextFocus"
             }
         ]
