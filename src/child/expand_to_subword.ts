@@ -1,28 +1,28 @@
 
-import {IResultSelection, getResult,ILine} from '../baseexpander';
+import {IResultSelection, getResult, ILine} from '../baseexpander';
 import {expand_to_regex_set } from './expand_to_regex_set';
 export function expand_to_subword(text: string, startIndex: number, endIndex: number): IResultSelection {
     var regex: RegExp;
-    if(_is_inside_upper(text,startIndex,endIndex)){
+    if (_is_inside_upper(text, startIndex, endIndex)) {
         regex = /[A-Z]/;
-    }else{
+    } else {
         regex = /[a-z]/;
     }
     let result = expand_to_regex_set(text, startIndex, endIndex, regex, "subword");
-    if(!result) return null;
+    if (!result) return null;
     // # check if it is prefixed by an upper char
     // # expand from camelC|ase| to camel|Case|
     let upper = /[A-Z]/;
-    if(upper.test(text[result.startIndex-1,result.startIndex])){
-        result.startIndex-=1;
+    if (upper.test(text[result.startIndex - 1, result.startIndex])) {
+        result.startIndex -= 1;
     }
-    if(!_is_true_subword(text,result)){
+    if (!_is_true_subword(text, result)) {
         return null;
     }
     return result;
 }
 
-function _is_true_subword(text:string, result:IResultSelection):boolean {
+function _is_true_subword(text: string, result: IResultSelection): boolean {
     let start = result.startIndex;
     let end = result.endIndex;
     let char_before = text.substring(start - 1, start);

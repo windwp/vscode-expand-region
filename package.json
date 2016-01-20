@@ -1,41 +1,48 @@
 {
-	"name": "expand-region",
-	"displayName": "expand-region",
-	"description": "expand selection",
-	"version": "0.0.1",
-	"publisher": "windwp",
-	"engines": {
-		"vscode": "^0.10.1"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onCommand:extension.expand_region"
-	],
-	"main": "./out/src/extension",
-	"contributes": {
-		"commands": [{
-			"command": "extension.expand_region",
-			"title": "ExpandRegion"
-		}],
+    "name": "expand-region",
+    "displayName": "expand-region",
+    "description": "expand selection , It works similar to ExpandRegion for Emacs and “Structural Selection” (Control-W) in the JetBrains IDE's (i.e. IntelliJ IDEA).",
+    "version": "0.0.1",
+    "publisher": "windwp",
+    "icon": "icon.png",
+    "bugs": {
+        "url": "https://github.com/windwp/vscode-expand-region/issues"
+    },
+    "homepage": "https://github.com/windwp/vscode-expand-region/blob/master/README.md",
+    "engines": {
+        "vscode": "^0.10.1"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.expand_region"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.expand_region",
+                "title": "Expand Region"
+            }
+        ],
         "keybindings": [
-			{
-				"key": "ctrl+w",
-				"mac": "cmd+w",
-				"command": "extension.expand_region",
-				"when": "editorTextFocus"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
-		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
-        "test":"mocha --ui tdd --recursive \"out/**/*.test.js\"",
-        "test:watch":"npm run test -- --watch"
-	},
-	"devDependencies": {
-		"typescript": "^1.6.2",
-		"vscode": "0.10.x"
-	}
+            {
+                "key": "ctrl+w",
+                "mac": "cmd+w",
+                "command": "extension.expand_region",
+                "when": "editorTextFocus"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "test": "mocha --ui tdd --recursive \"out/**/*.test.js\"",
+        "test:watch": "npm run test -- --watch"
+    },
+    "devDependencies": {
+        "typescript": "^1.6.2",
+        "vscode": "0.10.x"
+    }
 }

@@ -1,4 +1,4 @@
-import {IResultSelection,getResult} from '../baseexpander';
+import {IResultSelection, getResult} from '../baseexpander';
 export function expand_to_line(text: string, startIndex: number, endIndex: number): IResultSelection {
     const lineReg = /\n/;
     const spacesAndTabsRe = /(\s|\t)*/
@@ -36,12 +36,12 @@ export function expand_to_line(text: string, startIndex: number, endIndex: numbe
     //remove blank space in top
     var s = text.substring(newStartIndex, newEndIndex);
     var r = spacesAndTabsRe.exec(s);
-    if (r&&r[0].length<=startIndex) {
+    if (r && r[0].length <= startIndex) {
         newStartIndex += r[0].length;
     }
     if (startIndex == newStartIndex && endIndex == newEndIndex) {
         return null;
     }
-    return getResult(newStartIndex,newEndIndex,text,'line');    
+    return getResult(newStartIndex, newEndIndex, text, 'line');
 
 }

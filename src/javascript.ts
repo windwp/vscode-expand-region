@@ -80,7 +80,7 @@ export class javascript extends BaseExpander {
         let expand_stack = [];
         expand_stack.push("semantic_unit");
         let result = ex.expand_to_semantic_unit(text, start, end);
-        if (result){
+        if (result) {
             result["expand_stack"] = expand_stack;
             return result;
         }

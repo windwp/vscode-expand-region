@@ -1,13 +1,13 @@
 import {IResultSelection, getResult} from '../baseexpander';
 export function expand_to_regex_set(text: string, startIndex: number, endIndex: number, regex: RegExp, type: string): IResultSelection {
     //add modifier
-    const globalRegex=new RegExp(regex.source,"g");
+    const globalRegex = new RegExp(regex.source, "g");
     //if{there is a selection (and not only a blinking cursor)
     if (startIndex != endIndex) {
         let selection = text.substring(startIndex, endIndex)
         // make sure, that every character of the selection meets the regex rules,
         // if not return here
-        if ((selection.match(globalRegex)||[]).length != selection.length) {
+        if ((selection.match(globalRegex) || []).length != selection.length) {
             return null;
         }
     }

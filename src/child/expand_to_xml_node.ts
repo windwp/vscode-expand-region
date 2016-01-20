@@ -2,12 +2,12 @@ import {IResultSelection, getResult} from '../baseexpander';
 export function expand_to_xml_node(text: string, start: number, end: number): IResultSelection {
     let tag_properties = get_tag_properties(text.substring(start, end));
     //if we are selecting a tag, then select the matching tag
-   //console.log(tag_properties)
+    //console.log(tag_properties)
     let tag_name;
     if (tag_properties) {
         tag_name = tag_properties["name"];
         if (tag_properties["type"] == "closing") {
-            let stringStartToTagStart = text.substring(0,start);
+            let stringStartToTagStart = text.substring(0, start);
 
             let openingTagPosition = find_tag(stringStartToTagStart, "backward", tag_name);
             if (openingTagPosition) {
@@ -36,7 +36,7 @@ export function expand_to_xml_node(text: string, start: number, end: number): IR
             return getResult(inner_start, inner_end, text, "inner_node");
     }
     //expand selection to the "parent" node of the current selection
-    let stringStartToSelectionStart = text.substring(0,start);
+    let stringStartToSelectionStart = text.substring(0, start);
     let parent_opening_tag = find_tag(stringStartToSelectionStart, "backward");
     let newStart = 0, newEnd = 0;
     if (parent_opening_tag) {
@@ -53,10 +53,9 @@ export function expand_to_xml_node(text: string, start: number, end: number): IR
             newStart = parent_opening_tag["start"];
             newEnd = parent_opening_tag["end"] + closingTagPosition["end"];
         }
-		return getResult(newStart, newEnd, text, "parent_node_content");
+        return getResult(newStart, newEnd, text, "parent_node_content");
     }
     return null;
-   
 }
 export function is_within_tag(text: string, startIndex, endIndex): any {
     let openingRe = /</;
@@ -101,9 +100,6 @@ export function is_within_tag(text: string, startIndex, endIndex): any {
         searchIndex += 1;
     }
 }
-
-
-
 export function get_tag_properties(text: string): any {
     var regex = /<\s*(\/?)\s*([^\s\/]*)\s*(?:.*?)(\/?)\s*>/;
     var tag_name, tag_type;
@@ -130,7 +126,7 @@ export function find_tag(text: string, direction: string, tag_name = ""): any {
     // search for opening and closing tag with a tag_name.If tag_name = "", search
     // for all tags.
     let regexString = "<\s*" + tag_name + ".*?>|<\/\s*" + tag_name + "\s*>";
-    let regex = new RegExp(regexString,'g');
+    let regex = new RegExp(regexString, 'g');
     // direction == "forward" implies that we are looking for closing tags (and
     // vice versa
     let target_tag_type = (direction == "forward" ? "closing" : "opening");
@@ -143,11 +139,11 @@ export function find_tag(text: string, direction: string, tag_name = ""): any {
     // since regex can't run backwards, we reverse the result
     var tArr = [];
     var r: any;
-    while((r = regex.exec(text)) !== null){
-		let tag_name = r[0];
-		let start = r.index;
-		let end = regex.lastIndex;
-		tArr.push({name:tag_name,start:start,end:end});
+    while ((r = regex.exec(text)) !== null) {
+        let tag_name = r[0];
+        let start = r.index;
+        let end = regex.lastIndex;
+        tArr.push({ name: tag_name, start: start, end: end });
     }
     if (direction == "backward") {
         tArr.reverse();
@@ -155,19 +151,19 @@ export function find_tag(text: string, direction: string, tag_name = ""): any {
 
     var result = null;
     tArr.forEach(value=> {
-        let tag_string =<string> value.name;
+        let tag_string = <string>value.name;
         // ignore comments
-        if(result){
-			return;
+        if (result) {
+            return;
         }
-        if (tag_string.startsWith("<!--")||tag_string.startsWith("<![")) {
+        if (tag_string.startsWith("<!--") || tag_string.startsWith("<![")) {
             return;
         }
         let tag_type = get_tag_properties(tag_string)["type"];
         if (tag_type == target_tag_type) {
             if (symbolStack.length === 0) {
-            	result={ "start": value.start, "end": value.end, "name": get_tag_properties(tag_string)["name"] };
-				return;
+                result = { "start": value.start, "end": value.end, "name": get_tag_properties(tag_string)["name"] };
+                return;
             }
             symbolStack.pop();
         }

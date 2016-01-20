@@ -15,10 +15,8 @@ import * as myExtension from '../src/extension';
 suite("Extension Tests", () => {
 
 	// Defines a Mocha unit test
-	test("Something23", () => {
-		assert.equal(-1, [1, 2, 3].indexOf(200890));
-        
-		assert.equal(-1, [1, 2, 3].indexOf(0));
+	test("Something", () => {
+	
 	});
     
 });

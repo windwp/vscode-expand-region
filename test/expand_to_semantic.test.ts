@@ -29,7 +29,7 @@ suite("Tests expand_to_semantic_unit", () => {
         assert.equal(result.selectionText, "foo.bar['property'].getX()")
         assert.equal(result.startIndex, 7)
         assert.equal(result.endIndex, 33)
-        
+
     });
     test(" test_2", () => {
         let result = expand_to_semantic_unit(fileData2, 13, 13);

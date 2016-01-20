@@ -18,34 +18,34 @@ suite("Tests expand_to_line", () => {
         assert.equal(result.startIndex, 10);
         assert.equal(result.endIndex, 18);
     });
-    test('test_existing_line_selection',()=>{
-        var result=expand_to_line(fileData1,10,18);
-        assert.equal(null,result);
+    test('test_existing_line_selection', () => {
+        var result = expand_to_line(fileData1, 10, 18);
+        assert.equal(null, result);
     });
-     test("test_with_no_spaces_or_tabs_at_beginning", () => {
+    test("test_with_no_spaces_or_tabs_at_beginning", () => {
         var result = expand_to_line(fileData2, 6, 12);
         assert.equal(result.selectionText, 'is it me');
         assert.equal(result.startIndex, 6);
         assert.equal(result.endIndex, 14);
     });
-     test("test_with_indention", () => {
+    test("test_with_indention", () => {
         var result = expand_to_line(" aa", 0, 0)
         assert.equal(result.selectionText, ' aa')
         assert.equal(result.startIndex, 0)
         assert.equal(result.endIndex, 3)
     })
-    
-     test("test_without_indention", () => {
+
+    test("test_without_indention", () => {
         var result = expand_to_line(" aa", 1, 1)
         assert.equal(result.selectionText, 'aa')
-        assert.equal(result.startIndex,1)
+        assert.equal(result.startIndex, 1)
         assert.equal(result.endIndex, 3)
     })
-    
-      test("test_with_indention2", () => {
+
+    test("test_with_indention2", () => {
         var result = expand_to_line("  aa", 1, 1)
-        assert.equal(result.selectionText,"  aa")
-        assert.equal(result.startIndex,0)
+        assert.equal(result.selectionText, "  aa")
+        assert.equal(result.startIndex, 0)
         assert.equal(result.endIndex, 4)
     })
 })
