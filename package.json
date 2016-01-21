@@ -42,6 +42,7 @@
         "test:watch": "npm run test -- --watch"
     },
     "devDependencies": {
+        "mocha": "~1.4.0",
         "typescript": "^1.6.2",
         "vscode": "0.10.x"
     }
