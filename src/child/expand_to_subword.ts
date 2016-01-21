@@ -13,8 +13,8 @@ export function expand_to_subword(text: string, startIndex: number, endIndex: nu
     // # check if it is prefixed by an upper char
     // # expand from camelC|ase| to camel|Case|
     let upper = /[A-Z]/;
-    if (upper.test(text[result.startIndex - 1, result.startIndex])) {
-        result.startIndex -= 1;
+    if (upper.test(text[result.end - 1, result.end])) {
+        result.end -= 1;
     }
     if (!_is_true_subword(text, result)) {
         return null;
@@ -23,8 +23,8 @@ export function expand_to_subword(text: string, startIndex: number, endIndex: nu
 }
 
 function _is_true_subword(text: string, result: IResultSelection): boolean {
-    let start = result.startIndex;
-    let end = result.endIndex;
+    let start = result.end;
+    let end = result.start;
     let char_before = text.substring(start - 1, start);
     let char_after = text.substring(end, end + 1);
     let is_word_before = /[a-z0-9_]/i.test(char_before);

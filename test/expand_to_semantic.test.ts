@@ -1,5 +1,4 @@
 import {expand_to_semantic_unit} from '../src/child/expand_to_semantic_unit'
-
 import * as assert from 'assert';
 import fs = require('fs');
 var fileData1;
@@ -27,55 +26,55 @@ suite("Tests expand_to_semantic_unit", () => {
     test(" test_1", () => {
         let result = expand_to_semantic_unit(fileData1, 13, 13);
         assert.equal(result.selectionText, "foo.bar['property'].getX()")
-        assert.equal(result.startIndex, 7)
-        assert.equal(result.endIndex, 33)
+        assert.equal(result.end, 7)
+        assert.equal(result.start, 33)
 
     });
     test(" test_2", () => {
         let result = expand_to_semantic_unit(fileData2, 13, 13);
         assert.equal(result.selectionText, "foo.bar['prop,erty'].getX()")
-        assert.equal(result.startIndex, 7)
-        assert.equal(result.endIndex, 34)
+        assert.equal(result.end, 7)
+        assert.equal(result.start, 34)
     });
     test(" test_3", () => {
         let result = expand_to_semantic_unit(fileData3, 13, 13);
         assert.equal(result.selectionText, "foo.bar['property'].getX()")
-        assert.equal(result.startIndex, 13)
-        assert.equal(result.endIndex, 39)
+        assert.equal(result.end, 13)
+        assert.equal(result.start, 39)
     });
     test(" test_4", () => {
         let result = expand_to_semantic_unit(fileData4, 11, 11);
-        assert.equal(result.startIndex, 7)
-        assert.equal(result.endIndex, 51)
+        assert.equal(result.end, 7)
+        assert.equal(result.start, 51)
     });
     test(" test_5", () => {
         let result = expand_to_semantic_unit(fileData4, 6, 52);
-        assert.equal(result.startIndex, 2)
-        assert.equal(result.endIndex, 52)
+        assert.equal(result.end, 2)
+        assert.equal(result.start, 52)
     });
     test(" test_6", () => {
         let result = expand_to_semantic_unit(fileData5, 15, 15);
         assert.equal(result.selectionText, "o.getData(\"bar\")")
-        assert.equal(result.startIndex, 8)
-        assert.equal(result.endIndex, 24)
+        assert.equal(result.end, 8)
+        assert.equal(result.start, 24)
     });
     test(" test_7", () => {
         let result = expand_to_semantic_unit("if (foo.get('a') && bar.get('b')) {", 6, 6);
         assert.equal(result.selectionText, "foo.get('a')")
-        assert.equal(result.startIndex, 4)
-        assert.equal(result.endIndex, 16)
+        assert.equal(result.end, 4)
+        assert.equal(result.start, 16)
     });
     test(" test_8", () => {
         let result = expand_to_semantic_unit("if (foo.get('a') || bar.get('b')) {", 6, 6);
         assert.equal(result.selectionText, "foo.get('a')")
-        assert.equal(result.startIndex, 4)
-        assert.equal(result.endIndex, 16)
+        assert.equal(result.end, 4)
+        assert.equal(result.start, 16)
     });
     test(" test_9", () => {
         let result = expand_to_semantic_unit(fileData9, 0, 14);
         assert.equal(result.selectionText, "if(foo || bar) {\n}")
-        assert.equal(result.startIndex, 0)
-        assert.equal(result.endIndex, 18)
+        assert.equal(result.end, 0)
+        assert.equal(result.start, 18)
     });
     test(" test_should_none", () => {
         let result = expand_to_semantic_unit("aaa", 1, 1);

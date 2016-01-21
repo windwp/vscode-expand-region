@@ -1,8 +1,6 @@
 import {trim} from '../src/baseexpander'
-
 import * as assert from 'assert';
 import fs = require('fs');
-// Defines a Mocha test suite to group tests of similar kind together
 var fileData1;
 var fileData2;
 suite("Tests trim", () => {

@@ -15,8 +15,8 @@ export const LanguageType = {
 }
 
 export class IResultSelection {
-    startIndex: number;
-    endIndex: number;
+    end: number;
+    start: number;
     selectionText: string;
     type: string;
 }
@@ -27,7 +27,7 @@ export class ILine {
 }
 
 export function getResult(start, end, text, type): IResultSelection {
-    return { startIndex: start, endIndex: end, selectionText: text.substring(start, end), type: type };
+    return { end: start, start: end, selectionText: text.substring(start, end), type: type };
 }
 
 

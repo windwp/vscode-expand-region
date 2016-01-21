@@ -15,26 +15,26 @@ suite("Tests expand_to_quotes", () => {
 
     test("test_double_quotes_inner", () => {
         let result = expand_to_quotes(fileData1, 6, 12);
-        assert.equal(result.startIndex, 1);
-        assert.equal(result.endIndex, 12);
+        assert.equal(result.end, 1);
+        assert.equal(result.start, 12);
         assert.equal(result.selectionText, "test string")
     });
     test(" test_double_quotes_outer", () => {
         let result = expand_to_quotes(fileData1, 1, 12);
-        assert.equal(result.startIndex, 0);
-        assert.equal(result.endIndex, 13);
+        assert.equal(result.end, 0);
+        assert.equal(result.start, 13);
         assert.equal(result.selectionText, "\"test string\"")
     })
     test(" test_single_quotes_inner", () => {
         let result = expand_to_quotes(fileData2, 6, 12);
-        assert.equal(result.startIndex, 1);
-        assert.equal(result.endIndex, 12);
+        assert.equal(result.end, 1);
+        assert.equal(result.start, 12);
         assert.equal(result.selectionText, "test string")
     });
     test(" test_single_quotes_outer", () => {
         let result = expand_to_quotes(fileData2, 1, 12);
-        assert.equal(result.startIndex, 0);
-        assert.equal(result.endIndex, 13);
+        assert.equal(result.end, 0);
+        assert.equal(result.start, 13);
         assert.equal(result.selectionText, "'test string'");
     });
     test(" test_should_not_find1", () => {
@@ -47,8 +47,8 @@ suite("Tests expand_to_quotes", () => {
     });
     test(" test_ignore_escaped_quotes", () => {
         let result = expand_to_quotes(fileData3, 2, 2);
-        assert.equal(result.startIndex, 1);
-        assert.equal(result.endIndex, 13);
+        assert.equal(result.end, 1);
+        assert.equal(result.start, 13);
         assert.equal(result.selectionText, "test\\\"string");
     });
 });

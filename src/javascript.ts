@@ -6,11 +6,11 @@ export class javascript extends BaseExpander {
     expand(text: string, start: number, end: number): IResultSelection {
         let selection_is_in_string = ex.expand_to_quotes(text, start, end);
         if (selection_is_in_string) {
-            let string_result = this.expand_agains_string(selection_is_in_string.selectionText, start - selection_is_in_string.startIndex, end - selection_is_in_string.startIndex);
+            let string_result = this.expand_agains_string(selection_is_in_string.selectionText, start - selection_is_in_string.end, end - selection_is_in_string.end);
             if (string_result) {
-                string_result.startIndex = string_result.startIndex + selection_is_in_string.startIndex;
-                string_result.endIndex = string_result.endIndex + selection_is_in_string.startIndex;
-                string_result.selectionText = text.substring(string_result.startIndex, string_result.endIndex);
+                string_result.end = string_result.end + selection_is_in_string.end;
+                string_result.start = string_result.start + selection_is_in_string.end;
+                string_result.selectionText = text.substring(string_result.end, string_result.start);
                 return string_result;
             }
         }
@@ -19,9 +19,9 @@ export class javascript extends BaseExpander {
             let line_string = text.substring(line.start, line.end);
             let line_result = this.expand_agains_line(line_string, start - line.start, end - line.start);
             if (line_result) {
-                line_result.startIndex = line_result.startIndex + line.start;
-                line_result.endIndex = line_result.endIndex + line.start;
-                line_result.selectionText = text.substring(line_result.startIndex, line_result.endIndex);
+                line_result.end = line_result.end + line.start;
+                line_result.start = line_result.start + line.start;
+                line_result.selectionText = text.substring(line_result.end, line_result.start);
                 return line_result;
             }
         }

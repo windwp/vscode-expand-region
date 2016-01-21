@@ -1,5 +1,4 @@
 import {is_within_tag, get_tag_properties, find_tag} from '../src/child/expand_to_xml_node'
-
 import * as assert from 'assert';
 import fs = require('fs');
 
