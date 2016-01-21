@@ -3,10 +3,14 @@
   "displayName": "expand-region",
   "description": "expand selection , It works similar to ExpandRegion for Emacs and “Structural Selection” (Control-W) in the JetBrains IDE's (i.e. IntelliJ IDEA).",
   "version": "0.0.1",
-  "publisher": "windwp",
+  "publisher": "letrieu",
   "icon": "icon.png",
   "bugs": {
     "url": "https://github.com/windwp/vscode-expand-region/issues"
+  },
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/windwp/vscode-expand-region.git"
   },
   "homepage": "https://github.com/windwp/vscode-expand-region/blob/master/README.md",
   "engines": {

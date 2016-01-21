@@ -1,4 +1,5 @@
 .vscode/**
+image/**
 typings/**
 out/test/**
 test/**
