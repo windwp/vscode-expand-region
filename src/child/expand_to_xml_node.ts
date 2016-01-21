@@ -156,7 +156,7 @@ export function find_tag(text: string, direction: string, tag_name = ""): any {
         if (result) {
             return;
         }
-        if (tag_string.startsWith("<!--") || tag_string.startsWith("<![")) {
+        if (tag_string.indexOf("<!--")===0 || tag_string.indexOf("<![")===0) {
             return;
         }
         let tag_type = get_tag_properties(tag_string)["type"];
