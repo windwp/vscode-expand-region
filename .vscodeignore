@@ -5,6 +5,7 @@ out/test/**
 test/**
 src/**
 doc/**
+node_modules/**
 **/*.map
 .gitignore
 tsconfig.json
