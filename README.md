@@ -37,10 +37,13 @@ and so on...
 
 ## Using
 - Set a shortcut.
-  Open "Key Bindings" and add to following line: 
+  Open "Key Bindings" and add following code: 
 ``` js
 {
     "key": "ctrl+w","command": "expand_region"
+},
+{
+    "key": "ctrl+shift+w","command": "undo_expand_region"
 }
 ```
 ## development
@@ -48,4 +51,9 @@ and so on...
 2. npm compile (compile typescript)
 3. npm test:watch (run mocha for test)
 
+
+
+## Change Log
+ v0.0.2
+  add feature undo_expand_region 
 
