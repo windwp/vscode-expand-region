@@ -76,5 +76,5 @@ export function expand_to_semantic_unit(text: string, startIndex: number, endInd
     if (newStartIndex == startIndex && newEndIndex == endIndex) return null;
     if (newStartIndex > startIndex || newEndIndex < endIndex) return null;
     return getResult(newStartIndex, newEndIndex, text, "semantic_unit");
-    return null;
+    // return null;
 }

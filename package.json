@@ -28,16 +28,20 @@
       {
         "command": "expand_region",
         "title": "Expand Region"
-      }
-    ],
-    "keybindings": [
-      {
-        "key": "ctrl+w",
-        "mac": "cmd+w",
-        "command": "expand_region",
-        "when": "editorTextFocus"
+      },{
+        "command":"undo_expand_region",
+        "title": "Undo Expand Region"
       }
     ]
+    // ,
+    // "keybindings": [
+    //   {
+    //     "key": "ctrl+w",
+    //     "mac": "ctrl+w",
+    //     "command": "expand_region",
+    //     "when": "editorTextFocus"
+    //   }
+    // ]
   },
   "scripts": {
     "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
