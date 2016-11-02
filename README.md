@@ -36,14 +36,14 @@ and so on...
 
 
 ## Using
-- Set a shortcut.
+- Set a keyboard shortcut.
   Open "Key Bindings" and add following code: 
 ``` js
 {
-    "key": "ctrl+w","command": "expand_region"
+    "key": "ctrl+w","command": "expand_region", "when": "editorTextFocus"
 },
 {
-    "key": "ctrl+shift+w","command": "undo_expand_region"
+    "key": "ctrl+shift+w","command": "undo_expand_region", "when": "editorTextFocus"
 }
 ```
 ## development
