@@ -43,7 +43,7 @@ and so on...
     "key": "ctrl+w","command": "expand_region", "when": "editorTextFocus"
 },
 {
-    "key": "ctrl+shift+w","command": "undo_expand_region", "when": "editorTextFocus"
+    "key": "ctrl+shift+w","command": "undo_expand_region", "when": "editorTextFocus && editorHasSelection"
 }
 ```
 ## development
