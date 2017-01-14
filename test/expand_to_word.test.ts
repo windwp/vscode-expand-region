@@ -1,4 +1,5 @@
-import {expand_to_word, expand_to_word_with_dot} from '../src/child/expand_to_word'
+import {expand_to_subword} from '../src/child/expand_to_subword';
+import {expand_to_word, expand_to_word_with_dot} from '../src/child/expand_to_word';
 import * as assert from 'assert';
 import fs = require('fs');
 var fileData1;
@@ -73,6 +74,11 @@ suite("Tests expand_to_word", () => {
         assert.equal(result.end, 86)
         assert.equal(result.start, 89)
     });
+    test(" test_expand_subword",()=>{
+        let result = expand_to_subword(fileData3, 1, 1);
+        assert.equal(result.end, 0)
+        assert.equal(result.start, 6)
+    })
 
 });
 suite("Tests expand_to_word with dot", () => {

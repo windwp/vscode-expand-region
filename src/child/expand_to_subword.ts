@@ -13,7 +13,7 @@ export function expand_to_subword(text: string, startIndex: number, endIndex: nu
     // # check if it is prefixed by an upper char
     // # expand from camelC|ase| to camel|Case|
     let upper = /[A-Z]/;
-    if (upper.test(text[result.end - 1, result.end])) {
+    if (upper.test(text.substring(result.end - 1, result.end))) {
         result.end -= 1;
     }
     if (!_is_true_subword(text, result)) {
