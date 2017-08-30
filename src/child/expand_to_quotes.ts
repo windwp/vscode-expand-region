@@ -1,6 +1,6 @@
 import {IResultSelection, getResult} from '../baseexpander';
 export function expand_to_quotes(text: string, startIndex: number, endIndex: number): IResultSelection {
-    var quotes_regex = /(['\"])(?:\\.|.)*?\1/g
+    var quotes_regex = /(['\"\`])(?:\\.|.)*?\1/g
     var r;
     // iterate over all found quotes pairs
     while ((r = quotes_regex.exec(text)) !== null) {

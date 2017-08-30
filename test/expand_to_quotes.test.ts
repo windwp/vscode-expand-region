@@ -51,4 +51,10 @@ suite("Tests expand_to_quotes", () => {
         assert.equal(result.start, 13);
         assert.equal(result.selectionText, "test\\\"string");
     });
+    test(" test_ignore_simple_quotes", () => {
+        let result = expand_to_quotes("a`12321`", 4, 5);
+        assert.equal(result.end, 2);
+        assert.equal(result.start, 7);
+        assert.equal(result.selectionText, "12321");
+    });
 });
