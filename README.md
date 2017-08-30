@@ -56,4 +56,7 @@ and so on...
 ## Change Log
  v0.0.2
   add feature undo_expand_region 
+ v0.1.0
+  support multi cursor
+  fix issue #10 #7
 
