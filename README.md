@@ -53,7 +53,7 @@ and so on...
 
 
 
-## Change Log
+## Change log
  v0.0.2
   add feature undo_expand_region 
  v0.1.0

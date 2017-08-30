@@ -2,7 +2,7 @@
   "name": "expand-region",
   "displayName": "expand-region",
   "description": "expand selection , It works similar to ExpandRegion for Emacs and “Structural Selection” (Control-W) in the JetBrains IDE's (i.e. IntelliJ IDEA).",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "letrieu",
   "icon": "icon.png",
   "bugs": {
