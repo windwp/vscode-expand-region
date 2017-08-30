@@ -1,8 +1,7 @@
-import {IResultSelection, getResult} from '../baseexpander';
+import { IResultSelection, getResult } from '../baseexpander';
 export function expand_to_xml_node(text: string, start: number, end: number): IResultSelection {
     let tag_properties = get_tag_properties(text.substring(start, end));
     //if we are selecting a tag, then select the matching tag
-    //console.log(tag_properties)
     let tag_name;
     if (tag_properties) {
         tag_name = tag_properties["name"];
@@ -16,10 +15,13 @@ export function expand_to_xml_node(text: string, start: number, end: number): IR
         }
         //if it's a opening tag, find opening tag and return positions
         else if (tag_properties["type"] == "opening") {
-            let stringNodeEndToStringEnd = text.substring(end, text.length);
-            let closingTagPosition = find_tag(stringNodeEndToStringEnd, "forward", tag_name);
-            if (closingTagPosition) {
-                return getResult(start, end + closingTagPosition["end"], text, "complete_node");
+            // check this tag already have closing tag inside
+            if (!is_text_close_tag(text.substring(start, end), tag_name)) {
+                let stringNodeEndToStringEnd = text.substring(end, text.length);
+                let closingTagPosition = find_tag(stringNodeEndToStringEnd, "forward", tag_name);
+                if (closingTagPosition) {
+                    return getResult(start, end + closingTagPosition["end"], text, "complete_node");
+                }
             }
         }
         //else it's self closing and there is no matching tag
@@ -148,15 +150,14 @@ export function find_tag(text: string, direction: string, tag_name = ""): any {
     if (direction == "backward") {
         tArr.reverse();
     }
-
     var result = null;
-    tArr.forEach(value=> {
+    tArr.forEach(value => {
         let tag_string = <string>value.name;
         // ignore comments
         if (result) {
             return;
         }
-        if (tag_string.indexOf("<!--")===0 || tag_string.indexOf("<![")===0) {
+        if (tag_string.indexOf("<!--") === 0 || tag_string.indexOf("<![") === 0) {
             return;
         }
         let tag_type = get_tag_properties(tag_string)["type"];
@@ -172,4 +173,49 @@ export function find_tag(text: string, direction: string, tag_name = ""): any {
         }
     });
     return result;
+}
+
+// check is text string have xml node closing ex:<div>aaa</div>
+export function is_text_close_tag(text: string, tag_name = ""): boolean {
+    // search for opening and closing tag with a tag_name.If tag_name = "", search
+    // for all tags.
+    let regexString = "<\s*" + tag_name + ".*?>|<\/\s*" + tag_name + "\s*>";
+    let regex = new RegExp(regexString, 'g');
+    // direction == "forward" implies that we are looking for closing tags (and
+    // vice versa
+    let target_tag_type = "closing";
+    // set counterpart
+    let target_tag_type_counterpart = "opening";
+
+    // found tags will be added/ removed from the stack to eliminate complete nodes
+    // (opening tag + closing tag).
+    let symbolStack = [];
+    // since regex can't run backwards, we reverse the result
+    var tArr = [];
+    var r: any;
+    while ((r = regex.exec(text)) !== null) {
+        let tag_name = r[0];
+        let start = r.index;
+        let end = regex.lastIndex;
+        tArr.push({ name: tag_name, start: start, end: end });
+    }
+    var result = null;
+    tArr.forEach(value => {
+        let tag_string = <string>value.name;
+        // ignore comments
+        if (result) {
+            return;
+        }
+        if (tag_string.indexOf("<!--") === 0 || tag_string.indexOf("<![") === 0) {
+            return;
+        }
+        let tag_type = get_tag_properties(tag_string)["type"];
+        if (tag_type == target_tag_type) {
+            symbolStack.pop();
+        }
+        else if (tag_type == target_tag_type_counterpart) {
+            symbolStack.push(tag_type);
+        }
+    });
+    return symbolStack.length == 0;
 }

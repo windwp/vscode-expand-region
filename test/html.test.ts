@@ -1,15 +1,16 @@
-import {BaseExpander} from '../src/baseexpander';
-import {html} from '../src/html';
+import { BaseExpander } from '../src/baseexpander';
+import { html } from '../src/html';
 import * as assert from 'assert';
 import fs = require('fs');
 var fileData1;
-
+let fileData2: string;
 suite("Tests integration html", () => {
-    var ex: BaseExpander;
-    suiteSetup(() => {
-        ex = new html();
-        fileData1 = fs.readFileSync('./out/test/snippets/html_01.txt', 'utf8');
-    });
+	var ex: BaseExpander;
+	suiteSetup(() => {
+		ex = new html();
+		fileData1 = fs.readFileSync('./out/test/snippets/html_01.txt', 'utf8');
+		fileData2 = fs.readFileSync('./out/test/snippets/html_issue#10.txt', 'utf8');
+	});
 	test(" test_expand_to_inner_head_of_node2 ", () => {
 		let result = ex.expand(fileData1, 11, 15);
 		assert.equal(result.end, 9);
@@ -80,4 +81,11 @@ suite("Tests integration html", () => {
 		assert.equal(result.end, 0);
 		assert.equal(result.start, 22);
 	});
+	test(' test expand to multi node issue 10', () => {
+		let result = ex.expand(fileData2, 43, 87);
+		// let result = ex.expand(fileData2, 60, 71);
+		// console.log(fileData2.substring(60, 71));
+		assert.equal(result.end, 33);
+		assert.equal(result.start, 93);
+	})
 });
