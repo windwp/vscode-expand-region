@@ -1,11 +1,11 @@
 [![Build Status](https://travis-ci.org/windwp/vscode-expand-region.svg?branch=master)](https://travis-ci.org/windwp/vscode-expand-region)
 # vscode-expand-region
-porting sublime-expand-region to visual code 
+porting sublime-expand-region to visual code
 https://github.com/aronwoost/sublime-expand-region
 
 ### Only support javascript and html now ,it will support python and latex in a future
 
-### JavaScript 
+### JavaScript
 ![](https://raw.githubusercontent.com/windwp/vscode-expand-region/master/image/javascript.gif)
 1. Expand selection to word
 2. Expand selection to quotes (content only)
@@ -20,7 +20,7 @@ https://github.com/aronwoost/sublime-expand-region
 and so on...
 
 
-### HTML
+### HTML/PHP
 
 ![](https://raw.githubusercontent.com/windwp/vscode-expand-region/master/image/html.gif)
 
@@ -37,7 +37,7 @@ and so on...
 
 ## Using
 - Set a keyboard shortcut.
-  Open "Key Bindings" and add following code: 
+  Open "Key Bindings" and add following code:
 ``` js
 {
     "key": "ctrl+w","command": "expand_region", "when": "editorTextFocus"
@@ -55,7 +55,7 @@ and so on...
 
 ## Change log
  v0.0.2
-  add feature undo_expand_region 
+  add feature undo_expand_region
  v0.1.0
   support multi cursor
   fix issue #10 #7
