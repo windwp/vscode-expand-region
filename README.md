@@ -51,12 +51,15 @@ and so on...
 2. npm compile (compile typescript)
 3. npm test:watch (run mocha for test)
 
+# Changelog
+## 0.1.2
+ * support php
 
+## 0.1.0
+  * support multi cursor
+  * fix issue #10 #7
 
-## Change log
- v0.0.2
-  add feature undo_expand_region
- v0.1.0
-  support multi cursor
-  fix issue #10 #7
-
+## 0.0.2
+  * add feature undo_expand_region
+## 0.0.1
+  * first release
