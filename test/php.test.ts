@@ -86,6 +86,6 @@ suite("Tests integration php", () => {
 		// let result = ex.expand(fileData2, 60, 71);
 		// console.log(fileData2.substring(60, 71));
 		assert.equal(result.end, 10);
-		assert.equal(result.start, 93);
+		assert.equal(result.start, 87);
 	})
 });
