@@ -3,7 +3,7 @@
 porting sublime-expand-region to visual code
 https://github.com/aronwoost/sublime-expand-region
 
-### Only support javascript and html now ,it will support python and latex in a future
+### Only support javascript and html now, it will support python and latex in a future
 
 ### JavaScript
 ![](https://raw.githubusercontent.com/windwp/vscode-expand-region/master/image/javascript.gif)
@@ -40,10 +40,14 @@ and so on...
   Open "Key Bindings" and add following code:
 ``` js
 {
-    "key": "ctrl+w","command": "expand_region", "when": "editorTextFocus"
+    "key": "ctrl+w",
+    "command": "expand_region",
+    "when": "editorTextFocus"
 },
 {
-    "key": "ctrl+shift+w","command": "undo_expand_region", "when": "editorTextFocus && editorHasSelection"
+    "key": "ctrl+shift+w",
+    "command": "undo_expand_region",
+    "when": "editorTextFocus && editorHasSelection"
 }
 ```
 ## development
