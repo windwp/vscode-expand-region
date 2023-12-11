@@ -45,9 +45,9 @@ export function expand_to_symbols(text: string, startIndex: number, endIndex: nu
         // # remove symbols that have a counterpart, i.e. that are "closed"
         while (true) {
             let item = selection_quotes[inspect_index];
-            if (item && selection_quotes.indexOf(counterparts[item]) != -1) {
+            if (item && selection_quotes.indexOf(counterparts[item] as never) != -1) {
                 selection_quotes.splice(inspect_index, 1);
-                selection_quotes.splice(selection_quotes.indexOf(counterparts[item]), 1);
+                selection_quotes.splice(selection_quotes.indexOf(counterparts[item] as never), 1);
             }
             else {
                 inspect_index = inspect_index + 1;
