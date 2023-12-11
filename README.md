@@ -1,11 +1,10 @@
 [![Build Status](https://travis-ci.org/windwp/vscode-expand-region.svg?branch=master)](https://travis-ci.org/windwp/vscode-expand-region)
+
 # vscode-expand-region
 porting sublime-expand-region to visual code
 https://github.com/aronwoost/sublime-expand-region
 
-### Only support javascript and html now ,it will support python and latex in a future
-
-### JavaScript
+### JavaScript/TypeScript
 ![](https://raw.githubusercontent.com/windwp/vscode-expand-region/master/image/javascript.gif)
 1. Expand selection to word
 2. Expand selection to quotes (content only)
@@ -20,8 +19,7 @@ https://github.com/aronwoost/sublime-expand-region
 and so on...
 
 
-### HTML/PHP
-
+### HTML/PHP/Astro
 ![](https://raw.githubusercontent.com/windwp/vscode-expand-region/master/image/html.gif)
 
 1. Expand selection to word
@@ -46,12 +44,19 @@ and so on...
     "key": "ctrl+shift+w","command": "undo_expand_region", "when": "editorTextFocus && editorHasSelection"
 }
 ```
-## development
+
+## Development
 1. npm install
 2. npm compile (compile typescript)
 3. npm test:watch (run mocha for test)
 
+## Roadmap
+- Support Python and Latex
+
 # Changelog
+## 0.1.2
+ * support astro
+
 ## 0.1.2
  * support php
 
@@ -61,6 +66,6 @@ and so on...
 
 ## 0.0.2
   * add feature undo_expand_region
-## 0.0.1
 
+## 0.0.1
   * first release
