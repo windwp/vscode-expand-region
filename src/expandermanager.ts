@@ -13,6 +13,7 @@ export class ExpanderManager {
         if (doc.languageId) {
             switch (doc.languageId) {
                 case LanguageType.HTML:
+                case LanguageType.ASTRO:
                     exp = new expander.html();
                     break;
                 case LanguageType.PHP:

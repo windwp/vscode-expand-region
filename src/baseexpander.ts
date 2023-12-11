@@ -10,6 +10,7 @@ export class BaseExpander {
 export const LanguageType = {
     JAVA_SCRIPT: 'javascript',
     TYPE_SCRIPT: 'typescript',
+    ASTRO: 'astro',
     HTML: 'html',
     PHP: 'php',
     Text: 'plaintext'

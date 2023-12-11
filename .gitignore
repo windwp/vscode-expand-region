@@ -17,3 +17,7 @@ out/**/*.js
 out/**/*.js.map
 node_modules
 doc
+
+# Builds
+*.vsix
+*.zip
